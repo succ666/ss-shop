@@ -6,6 +6,9 @@ export default {
   state: () => ({
     // 收货地址
      address: JSON.parse(uni.getStorageSync('address') || '{}'),
+	 token: uni.getStorageSync('token') || '',
+	 // 用户的基本信息
+	 userInfo: JSON.parse(uni.getStorageSync('userinfo') || '{}')
   }),
 
   // 方法
@@ -19,6 +22,25 @@ export default {
 	saveAddressToStorage(state) {
 		uni.setStorageSync('address', JSON.stringify(state.address))
 	},
+	// 更新用户的基本信息
+	updateUserInfo(state, userinfo){
+		state.userinfo = userinfo
+		this.commit('m_user/saveUserInfoToStorage')
+	},
+	// 将 userinfo 持久化存储到本地
+	saveUserInfoToStorage(state){
+		uni.setStorageSync('userinfo', JSON.stringify(state.userinfo))
+	},
+	// 更新 token 字符串
+	updateToken(state, token){
+		state.token = token
+		this.commit('m_user/saceTokenToStorage')
+	},
+	// 将 token 持久化存储到本地
+	saceTokenToStorage(state){
+		uni.setStorageSync('token', JSON.stringify(state.token))
+	}
+	
   },
 
   // 数据包装器
