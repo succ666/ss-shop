@@ -1,12 +1,14 @@
 <template>
 	<view class="goods-item">
 		<view class="goods-item-left">
+			<slot name="radio"></slot>
 			<image :src="goods.goods_small_logo || defaultPic" class="goods-pic"></image>
 		</view>
 		<view class="goods-item-right">
 			<view class="goods-name">{{goods.goods_name}}</view>
 			<view class="goods-info-box">
 				<view class="goods-price">¥{{goods.goods_price | tofixed}}</view>
+				<slot name="number"></slot>
 			</view>
 		</view>
 	</view>

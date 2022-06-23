@@ -31,7 +31,9 @@
 </template>
 
 <script>
+	import bageMix from '@/mixins/tabbar-badge.js'
 	export default {
+		mixins: [bageMix],
 		data() {
 			return {
 				wh: 0,
